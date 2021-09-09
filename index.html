@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <title> </title>
+    <meta name="description" content="">
+
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content="" />
+
+    <meta name="twitter:card" content="" />
+    <meta name="twitter:site" content="@" />
+
+    <link rel="icon" type="image/png" href="/ogatism.png">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            color: #545559;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        pre {
+            background: #eee;
+            padding: 10px;
+        }
+        .border {
+            border: 1px solid #ff4444;
+            padding: 10px;
+        }
+        .number {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>天体位置計算ツール</h1>
+    <p>
+        当サイトではswiss Ephemerisを使った現在の星の位置を提供するバイナリを提供しています。<br>
+        こちらを各種言語からexecで読み込むことで簡単にAPIを実現できます。
+    </p>
+
+    <h2>こんなことがプログラムから調べられる！</h2>
+    <ul>
+        <li>今って何座なの？</li>
+        <li>現在の月の位置を調べたい！</li>
+    </ul>
+
+    <h2>配布形態等</h2>
+    <p>
+        以下の形態が選べます。
+    </p>
+    <p class="border">
+        配布形式：Linux用実行バイナリファイル<br>
+        対象天体：10天体+プラシーダスによる12ハウス<br>
+        料金：11000円(税込)<br>
+    </p>
+    <p class="border">
+        配布形式：wordpressプラグイン<br>
+        対象天体：10天体+プラシーダスによる12ハウス<br>
+        料金：22000円(税込)<br>
+		<span style="color: #ff4444;">Xserverで動作確認済</span>
+    </p>
+
+    <h2>注意点</h2>
+    <p>
+    対象天体はJSTのみとなります。<br>
+    ハウス計算はプラシーダスのみとなります。
+    </p>
+
+    <h2>使い方</h2>
+    <p>
+    swetest2というファイルが提供されますので、実行権を設定の上実行してください。<br>
+    </p>
+    <pre>./swetest2 -y 2020 -m 1 -d 1 -h 12 -i 34 -s 56 -a 35.453962 -o 139.617206</pre>
+    <p>
+        オプションは下記のようになっています。<br>
+        -y: 対象の年(4桁)<br>
+        -m: 対象の月<br>
+        -d: 対象の日<br>
+        -h: 対象の時刻<br>
+        -i: 対象の分<br>
+        -s: 対象の秒<br>
+        -a: 対象の緯度<br>
+        -o: 対象の経度<br>
+        下記のような結果が出ます。<br>
+    </p>
+
+    <h2>結果</h2>
+    <pre>
+2020 1 1 12 34 56.000000 35.453962 139.617206
+planet,0,280.161690
+planet,1,347.915524
+planet,2,274.618479
+planet,3,314.592475
+planet,4,238.485003
+planet,5,276.704751
+planet,6,291.412435
+planet,7,32.692755
+planet,8,346.267415
+planet,9,292.390525
+house,1,35.701497
+house,2,66.260460
+house,3,89.640650
+house,4,111.857620
+house,5,137.336304
+house,6,171.255541
+house,7,215.701497
+house,8,246.260460
+house,9,269.640650
+house,10,291.857620
+house,11,317.336304
+house,12,351.255541
+sensitive,11,98.387447
+sensitive,13,359.832612
+sensitive,15,1.598955
+</pre>
+    <dl>
+        <dt>1行目</dt>
+        <dd>
+            入力内容
+        </dd>
+        <dt>planet</dt>
+        <dd>
+            天体の角度です。以下の順番で並びます。<br>
+            <span class="number">0</span>太陽<br>
+            <span class="number">1</span>月<br>
+            <span class="number">2</span>水星<br>
+            <span class="number">3</span>金星<br>
+            <span class="number">4</span>火星<br>
+            <span class="number">5</span>木星<br>
+            <span class="number">6</span>土星<br>
+            <span class="number">7</span>天王星<br>
+            <span class="number">8</span>海王星<br>
+            <span class="number">9</span>冥王星
+        </dd>
+        <dt>ハウス</dt>
+        <dd>
+            ハウスの角度です。1番目の角度がASCとなります。
+        </dd>
+        <dt>sensitive</dt>
+        <dd>
+            感受点です。番号との対応は以下のようになっています。<br>
+            <span class="number">11</span>DragonHead(NorthNode)<br>
+            <span class="number">13</span>リリス<br>
+            <span class="number">15</span>Chiron<br>
+        </dd>
+    </dl>
+
+    <h2>注意</h2>
+    <p>
+    APIとしての利用法等の質問にはお答えいたしません。<br>
+    セレスなどの角度もご希望の場合は追加料金で対応いたします。<br>
+    </p>
+
+    <h2>スクリーンショット(wordpressプラグイン)</h2>
+    <p>
+        <img src="wordpress1.png" alt="天体表示プラグイン">
+    </p>
+
+    <h2>購入</h2>
+    <p>
+    購入を希望される方はinfo◆ogatism.jpまでメールをお願いします。
+    </p>
+</div>
+</body>
+</html>
